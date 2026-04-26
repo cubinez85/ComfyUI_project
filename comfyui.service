@@ -1,0 +1,18 @@
+[Unit]
+Description=ComfyUI Service
+After=network.target docker.service
+
+[Service]
+Type=simple
+User=cubinez85
+WorkingDirectory=/home/cubinez85/ComfyUI
+# Важно: указываем путь к python внутри venv
+ExecStart=/home/cubinez85/ComfyUI/venv/bin/python /home/cubinez85/ComfyUI/main.py --listen 127.0.0.1 --port 8188 --cpu
+Restart=on-failure
+RestartSec=10
+# Перенаправляем логи в systemd, чтобы их было видно через journalctl
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
