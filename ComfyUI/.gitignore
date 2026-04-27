@@ -1,5 +1,6 @@
 __pycache__/
 *.py[cod]
+.env
 /output/
 /input/
 !/input/example.png
@@ -24,3 +25,4 @@ web_custom_versions/
 openapi.yaml
 filtered-openapi.yaml
 uv.lock
+
