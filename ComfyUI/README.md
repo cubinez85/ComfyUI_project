@@ -89,6 +89,15 @@ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 free -h
 # Swap: должно быть ~8.0G ✅
 
+# Проверить текущее значение
+cat /proc/sys/vm/swappiness
+
+# Временно установить 10 (до перезагрузки)
+sudo sysctl vm.swappiness=10
+
+# Постоянно: добавить в /etc/sysctl.conf
+echo 'vm.swappiness=10' | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
 
 notepad C:\Users\Oleg\.wslconfig
 
